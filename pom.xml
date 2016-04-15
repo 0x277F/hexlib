@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>__0x277F.plugins</groupId>
+    <artifactId>hexlib-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <contributors>
+        <contributor>
+            <name>__0x277F</name>
+            <email>0x277F@gmail.com</email>
+            <roles>
+                <role>Project Founder</role>
+            </roles>
+        </contributor>
+    </contributors>
+
+    <build>
+        <defaultGoal>-am clean install</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
+    <modules>
+        <module>hexlib_v1_8_R3</module>
+        <module>hexlib_v1_9_R1</module>
+        <module>hexlib-plugin</module>
+        <module>output</module>
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>Torchmind</id>
+            <url>https://maven.torchmind.com/snapshot/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.torchmind.minecraft</groupId>
+            <artifactId>plugin-annotations</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+</project>

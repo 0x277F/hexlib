@@ -1,0 +1,7 @@
+.idea/
+*.ipr
+*.iml
+*.iws
+dependency-reduced-pom.xml
+*.jar
+*.class
