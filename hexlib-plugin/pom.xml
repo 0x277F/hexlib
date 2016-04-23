@@ -14,28 +14,50 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>com.google.code.maven-replacer-plugin</groupId>
-                <artifactId>replacer</artifactId>
-                <version>1.5.3</version>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>templating-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <phase>generate-sources</phase>
+                        <id>filter-src</id>
                         <goals>
-                            <goal>replace</goal>
+                            <goal>filter-sources</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirectory>${basedir}/src/main/java-templates</sourceDirectory>
+                            <outputDirectory>${project.build.directory}/generated-sources/java-templates
+                            </outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>fix-module</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>exec</goal>
                         </goals>
                     </execution>
                 </executions>
                 <configuration>
-                    <includes>
-                        <include>${basedir}/src/main/java/__0x277F/plugins/hexlib/HexLibPluginInfo.java</include>
-                    </includes>
-                    <replacements>
-                        <replacement>
-                            <token>(PLUGIN_VERSION = "(.*?)")</token>
-                            <value>PLUGIN_VERSION = "${git.commit.id.abbrev}"</value>
-                        </replacement>
-                    </replacements>
+                    <executable>${project.basedir}/fixModuleDesc.sh</executable>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>net.md-5</groupId>
+                <artifactId>scriptus</artifactId>
+                <version>0.1</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>describe</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

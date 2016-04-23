@@ -13,6 +13,7 @@
     <artifactId>hexlib-output</artifactId>
 
     <build>
+        <finalName>${describe}</finalName>
         <defaultGoal>clean install</defaultGoal>
         <plugins>
             <plugin>

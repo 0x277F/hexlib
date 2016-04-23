@@ -13,7 +13,7 @@ public @interface MCVersionImpl {
      * Use this if the implementation:
      * <ul>
      * <li>Isn't in the same package</li>
-     * <li>Doesn't have the same beginning name as described in {@link PolyVersionImpl}</li>     *
+     * <li>Doesn't have the same beginning value as described in {@link PolyVersionImpl}</li>     *
      * </ul>
      */
     String name() default "##PROVIDED##";

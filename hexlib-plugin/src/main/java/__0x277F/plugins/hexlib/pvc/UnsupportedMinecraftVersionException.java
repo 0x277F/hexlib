@@ -1,4 +1,4 @@
-package __0x277F.plugins.hexlib;
+package __0x277F.plugins.hexlib.pvc;
 
 public class UnsupportedMinecraftVersionException extends RuntimeException {
     public UnsupportedMinecraftVersionException(String msg) {

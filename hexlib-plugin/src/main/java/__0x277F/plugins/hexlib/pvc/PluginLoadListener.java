@@ -37,14 +37,7 @@ public class PluginLoadListener implements Listener {
             MultiVersionPlugin data = pluginClass.getAnnotation(MultiVersionPlugin.class);
             plugin.getLogger().info("Found plugin " + p.getName() + " supporting multiple versions.");
             Collection<Class<?>> absclasses = new HashSet<>();
-            Arrays.stream(data.value()).forEach(name -> {
-                try {
-                    absclasses.add(Class.forName(name, false, pluginClass.getClassLoader()));
-                } catch (ClassNotFoundException e) {
-                    //Class does not exist
-                    plugin.getLogger().warning("Could not locate class " + name + " specified as multi-version for plugin " + p.getName());
-                }
-            });
+            Arrays.stream(data.value()).forEach(absclasses::add);
             absclasses.stream().forEach(absClass -> {
                 if (absClass.isAnnotationPresent(PolyVersionCompat.class)) {
                     PolyVersionCompat compat = absClass.getAnnotation(PolyVersionCompat.class);

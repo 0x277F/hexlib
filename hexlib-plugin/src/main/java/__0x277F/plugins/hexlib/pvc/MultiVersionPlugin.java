@@ -8,11 +8,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface MultiVersionPlugin {
-    /**
-     * Fully-qualified class names of all version-specific superclasses
-     * (annotated with {@link PolyVersionCompat})
-     *
-     * @return
-     */
-    String[] value();
+    Class<?>[] value();
 }
